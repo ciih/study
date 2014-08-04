@@ -1,0 +1,32 @@
+
+
+
+/* scrollup */
+#scrollUp{
+	z-index:10000;position:fixed;left:50%;bottom:60px;margin-left:508px;
+	overflow:hidden;display:block;margin-bottom:4px;width:55px;height:55px;text-indent:-99em;
+	background-image:url(http://p1.qhimg.com/t0124a8b3318c3bf627.png);background-repeat:no-repeat;background-position:0 0;
+}
+#scrollUp:hover{
+	text-decoration:none;background-position:0 -57px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
