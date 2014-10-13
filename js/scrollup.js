@@ -1,19 +1,13 @@
 ﻿(function(){
 
-	var scrollUp = {};
+	var scrollUp = {
+
+		
 
 
 
-
-
-
-
-
-
-
-
-
-
+		
+	}
 
 
 })();
