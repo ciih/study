@@ -2,9 +2,7 @@
 
     ini_set('date.timezone','PRC');
 
-    function getDirFile($name) {
-        $fileName = $name;
-        $path = getcwd() . '\\' . $fileName; // getcwd() == dirname(__FILE__)
+    function getDirFile($path) {
         if (is_dir($path)) {
             $files = array_slice(scandir($path), 2); // remove . && ..
         } else {
@@ -13,17 +11,16 @@
         }
         
         foreach ($files as $item) {
-            $currPath = $path . '\\' . $item;
+            $currPath = $path . '/' . $item;
             if (is_dir($currPath)) {
-                $newName = $fileName . '\\' . $item;
-                echo "$newName <br />";
-                getDirFile($newName);
+                echo "$currPath \n";
+                getDirFile($currPath);
             } else {
-                echo "-- $item <br />";
+                echo "-- $item \n";
             }
         }
     }
 
-    getDirFile('test');
+    getDirFile('/home/chenhong/devspace/hao360cn_fetest/study/test');
 
 ?>
