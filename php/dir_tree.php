@@ -21,6 +21,6 @@
         }
     }
 
-    getDirFile('/home/chenhong/devspace/hao360cn_fetest/study/test');
+    getDirFile('path_address');
 
 ?>
