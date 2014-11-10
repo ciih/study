@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>我的学习_抽牌</title>
+<base target="_blank"/>
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/scrollup.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	.wrap{height:3000px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+	<div id="his"></div>
+    <div id="me"></div>
+    <button id="start">开始分牌</button>
+
+</div>
+</body>
+<script type="text/javascript">
+(function(){
+    function choupai() {
+        var pai = [1,2,3,4,5,6,7,8,9,10];
+            me  = [],
+            his = [];
+        var num;
+        for(var i = pai.length; i > 0; i--) {
+            num = Math.floor(Math.random() * i);
+            if(i % 2 == 1) {
+                me.push(pai[num]);
+            } else {
+                his.push(pai[num]);
+            }
+            pai[num] = pai[i-1];
+        }
+        return {
+            me : me.join(','),
+            his: his.join(',')
+        }
+    }
+    document.getElementById('start').addEventListener('click', function(){
+        var pai = choupai();
+        document.getElementById('me').innerHTML = '我分到的牌:' + pai.me;
+        document.getElementById('his').innerHTML = '他分到的牌:' + pai.his;
+    })
+})();
+</script>
+</html>
