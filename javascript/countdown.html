@@ -16,19 +16,20 @@
 (function(){
 
     var CountDownConf = { //配置
-        id    : "date",
+        DomId : "date",
         start : "", // 开始时间，为空代表从当前时间开始
         end   : "2015/01/01 00:00:00"  // 结束时间
     }
 
     function CountDown(CountDownConf) {
-        if(!CountDownConf.id || !document.getElementById(CountDownConf.id)) {
+        if(!CountDownConf.DomId || !document.getElementById(CountDownConf.DomId)) {
+            // 这里判断DomId配置是否正确，可以像下边这样纠错，也可以直接返回错误信息
             var cDiv = document.createElement('div');
             cDiv.id = 'countDownWrap';
             document.body.appendChild(cDiv);
-            this.id = cDiv.id;
+            this.DomId = cDiv.id;
         } else {
-            this.id    = CountDownConf.id;
+            this.DomId    = CountDownConf.DomId;
         }
         this.date  = CountDownConf.end.slice(0,10);
         this.start = CountDownConf.start ? new Date(CountDownConf.start).getTime() : new Date().getTime();
@@ -38,7 +39,7 @@
     CountDown.prototype.init = function() {
         var _self = this;
         var isOn = false;
-        var tplContainer = document.getElementById(_self.id);
+        var tplContainer = document.getElementById(_self.DomId);
         var currentTime;
         var calCountDown = function() {
             currentTime = new Date().getTime();
