@@ -34,7 +34,7 @@
         var currentTime;
         var calCountDown = function() {
             currentTime = new Date().getTime();
-            if(currentTime - _self.start < 0 && currentTime - _self.end > 0) {
+            if(currentTime - _self.start < 0 || currentTime - _self.end > 0) {
                 isOn = false;
                 clearInterval(timer);
                 return;
