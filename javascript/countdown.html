@@ -22,7 +22,7 @@
     }
 
     function CountDown(CountDownConf) {
-        if(CountDownConf.id || document.getElementById(CountDownConf.id)) {
+        if(!CountDownConf.id || !document.getElementById(CountDownConf.id)) {
             var cDiv = document.createElement('div');
             cDiv.id = 'countDownWrap';
             document.body.appendChild(cDiv);
