@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>我的学习_倒计时</title>
+<base target="_blank"/>
+</head>
+<body>
+<div class="wrap">
+
+    <div id="date"></div>
+
+    <button id="btn">开始计时</button>
+
+</div>
+</body>
+<script type="text/javascript">
+(function(){
+
+    var CountDownConf = {
+        start : "", // 这个参数暂时不用，做定时上下线时再使用
+        end   : "2015/01/01 00:00:00"  // 这个是结束时间
+    }
+
+    function CountDown(CountDownConf, id) {
+        this.id = id;
+        this.date  = CountDownConf.end.slice(0,10);
+        this.start = CountDownConf.start ? new Date(CountDownConf.start).getTime() : new Date().getTime();
+        this.end   = CountDownConf.end ? new Date(CountDownConf.end).getTime() : new Date().getTime() + 86400000;
+    }
+
+    CountDown.prototype.init = function() {
+        var _self = this;
+        var isOn = false;
+        var tplContainer = document.getElementById(_self.id);
+        var currentTime;
+        var calCountDown = function() {
+            currentTime = new Date().getTime();
+            if(currentTime - _self.start < 0 && currentTime - _self.end > 0) {
+                isOn = false;
+                clearInterval(timer);
+                return;
+            } else {
+                isOn = true;
+            }
+            if(isOn) {
+                var interval = _self.end - currentTime;
+                var intervalSecond = Math.floor(interval / 1000);
+                var day    = Math.floor(intervalSecond / 86400),
+                    hour   = Math.floor((intervalSecond - day * 86400) / 3600),
+                    minute = Math.floor((intervalSecond - day * 86400 - hour * 3600) /60),
+                    second = Math.floor((intervalSecond - day * 86400 - hour * 3600 - minute * 60));
+                var showTime = {
+                    days : day > 9 ? day : '0' + day,
+                    hours : hour > 9 ? hour : '0' + hour,
+                    minutes : minute > 9 ? minute : '0' + minute,
+                    seconds : second > 9 ? second : '0' + second
+                };
+                tplContainer.innerHTML = '距离' + _self.date + '还有' + showTime.days + '天' + showTime.hours + '小时' + showTime.minutes + '分' + showTime.seconds + '秒';
+            }
+        };
+        var timer = setInterval(calCountDown,500);
+        
+    };
+
+    new CountDown(CountDownConf, 'date').init();
+
+})();
+</script>
+</html>
