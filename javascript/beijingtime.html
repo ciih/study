@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>我的学习_北京时间_20141118</title>
+<base target="_blank"/>
+</head>
+<body>
+<div class="wrap">
+
+    <div id="beijingTime"></div>
+
+</div>
+</body>
+<script type="text/javascript">
+(function(){
+
+    function BeijingTime(DomId) {
+        if(!DomId || !document.getElementById(DomId)) {
+            // 这里判断DomId是否存在，可以像下边这样纠错，也可以直接返回错误信息
+            var cDiv = document.createElement('div');
+            cDiv.id = 'beijingTime';
+            document.body.appendChild(cDiv);
+            id = cDiv.id;
+        }
+        var id = DomId;
+        var isOn = false; // 备用，停止开关
+        var currentDate = new Date();
+        var tplContainer = document.getElementById(id);
+        tplContainer.innerHTML = '现在是北京时间：' + '年' + '月' + '日';        
+    }
+
+    setInterval(calCountDown,500);
+
+})();
+</script>
+</html>
