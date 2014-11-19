@@ -36,7 +36,7 @@
         var time = {
             hour   : currentDate.getHours(),
             minute : currentDate.getMinutes(),
-            second : currentDate.getSeconds()
+            second : currentDate.getSeconds() < 10 ? '0' + currentDate.getSeconds() : currentDate.getSeconds()
         }
 
         tplContainer.innerHTML = '现在是北京时间：' + date.year + '年' + date.month + '月' + date.day + '日' + time.hour + ':' + time.minute + ':' + time.second;        
