@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>我的学习_正则表达式</title>
+<base target="_blank"/>
+</head>
+<body>
+<div class="wrap">
+
+	<h1>能用在字符串中的正则表达式</h1>
+	<p>String.match(reg)，参数是与则表达式，功能是找到一个或多个正则表达式的匹配，返回一个查找结果的数组</p>
+	<p>String.replace(reg,replacement)，第一个参数可以为正则表达式，功能是找到一个或多个正则表达式的匹配，并替换成第二个参数的内容</p>
+	<p>String.search(reg)，参数是正则表达式，功能是搜索与正则表达式相匹配的子串，返回匹配子串的索引值</p>
+
+	<h1>正则表达式本身的方法</h1>
+	<p>regexp.exec(string)，用正则表达式测试字符串并以数组的形式返回匹配的子串</p>
+	<p>regexp.test(string)，用正则表达式测试字符串，如果有就返回true，无就返回false</p>
+	<p>regexp.source，为属性，返回正则表达式的内容</p>
+
+	<div id="price-input">
+		<h2>请在输入框输入价格</h2>
+		<input type="text" id="user-price"><span id="error-info" style="display:none;">请检查您输入的价格</span>
+	</div>
+
+</div>
+</body>
+<script type="text/javascript">
+(function(){
+
+	var inputVal;
+	var reg = /^[1-9]\d*$/g
+	var el = document.getElementById('user-price');
+
+	el.addEventListener('blur',function(){
+		inputVal = document.getElementById('user-price').value;
+		if(!inputVal.match(reg)) {
+			document.getElementById('error-info').style.display = 'block';
+		} else {
+			document.getElementById('error-info').style.display = 'none';
+		}
+	})
+
+
+})();
+</script>
+</html>
