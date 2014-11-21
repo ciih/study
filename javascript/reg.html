@@ -29,17 +29,28 @@
 (function(){
 
 	var inputVal;
-	var reg = /^[1-9]\d*$/g
+	var reg = /^[1-9]\d*\.?\d*$/g
 	var el = document.getElementById('user-price');
 
-	el.addEventListener('blur',function(){
-		inputVal = document.getElementById('user-price').value;
-		if(!inputVal.match(reg)) {
-			document.getElementById('error-info').style.display = 'block';
-		} else {
-			document.getElementById('error-info').style.display = 'none';
-		}
-	})
+	if(el.addEventListener) {
+		el.addEventListener('blur',function(){
+			inputVal = document.getElementById('user-price').value;
+			if(!inputVal.match(reg)) {
+				document.getElementById('error-info').style.display = 'block';
+			} else {
+				document.getElementById('error-info').style.display = 'none';
+			}
+		})
+	} else {
+		el.attachEvent('onblur',function(){
+			inputVal = document.getElementById('user-price').value;
+			if(!inputVal.match(reg)) {
+				document.getElementById('error-info').style.display = 'block';
+			} else {
+				document.getElementById('error-info').style.display = 'none';
+			}
+		})
+	}
 
 
 })();
