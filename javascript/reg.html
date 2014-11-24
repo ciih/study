@@ -29,7 +29,8 @@
 (function(){
 
 	var inputVal;
-	var reg = /^[1-9]\d*\.?\d*$/g
+	//var reg = /^[1-9]\d*\.?\d*$/g; // ciih write
+	var reg = /^([1-9]\d*|0)(\.\d{1,2})?$/g;
 	var el = document.getElementById('user-price');
 
 	if(el.addEventListener) {
