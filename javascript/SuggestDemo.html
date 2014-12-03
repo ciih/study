@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>模板页面--JK@奇舞团</title>
+<script src="http://s0.qhimg.com/lib/jquery/162.js"></script>
+<style>
+</style>
+</head>
+
+<body>
+调试习题，把本页的代码改好。
+<div>
+	<form action="http://www.so.com/s?">
+		<div id="sug-wrapper" style="position:absolute;top:47px;display:none;">
+			<ul id="sug-content" style="position:relative;top:0;margin:0;border:1px solid black"></ul>
+		</div>
+		<input id="q" name="q" value="中"><input type=submit value="搜索">
+	</form>
+</div>
+
+<script type="text/javascript">
+	function suggest_so(data){
+		//请完善本函数，将“suggest-data.js”里的数据显示到ul#sug-content里
+		var dataJSON = data;
+		var inputId = document.getElementById('sug-content');
+		var html = '';
+		for(var i = 0; i < dataJSON.result.length; i++) {
+			html += '<li>' + dataJSON.result[i].word + '</li>';
+		}
+		inputId.innerHTML = html;
+	}
+	var inputEl = document.getElementById('q');
+	if(inputEl.addEventListener) {
+		inputEl.addEventListener('keyup', function(){
+			if(unescape(inputEl.value) == '奇虎') {
+				suggest_so({
+				     "query": "奇虎",
+				     "result": [{
+				         "word": "奇虎360"
+				     }, {
+				         "word": "奇虎360官网"
+				     }, {
+				         "word": "奇虎网"
+				     }, {
+				         "word": "奇虎360股价"
+				     }, {
+				         "word": "奇虎股价"
+				     }, {
+				         "word": "奇虎影视"
+				     }, {
+				         "word": "奇虎问答"
+				     }, {
+				         "word": "奇虎搜索"
+				     }, {
+				         "word": "奇虎股票"
+				     }, {
+				         "word": "奇虎360招聘"
+				     }],
+				     "version": "3.0"
+				 });
+				document.getElementById('sug-wrapper').style.display = 'block';
+			}
+		});
+	}
+  
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
