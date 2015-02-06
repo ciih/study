@@ -7,19 +7,265 @@
 <link href="css/reset.css" rel="stylesheet" type="text/css" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
-
+	.form{margin:20px 0 0;padding:20px;}
+	.form label{margin-right:20px;}
+	.form span{margin-right:10px;}
+	.box{display:block;margin:15px;padding:20px;float:left;color:#fff;border:1px solid #2ef;}
+	.box li{float:left;margin:0 5px;padding:0 5px;min-height:10px;border:1px solid #2ef;}
 </style>
 </head>
 <body>
-	
-	
 
+	<div class="form">
+		<label>
+			<span>基本选择器:</span>
+			<select id="base">
+				<option selected="selected" data-element="#base-container *">default</option>
+				<option data-element="#base-container *">all</option>
+				<option data-element="#base-container div">div</option>
+				<option data-element="#base-container p">p</option>
+				<option data-element="#base-container span">span</option>
+			</select>
+		</label>
+	</div>
+
+	<div id="base-container" class="clearfix">
+		<div class="box">div</div>
+		<p class="box">p</p>
+		<div class="box">div</div>
+		<span class="box">span</span>
+		<div class="box">div</div>
+		<span class="box">span</span>
+	</div>
+
+	<div class="form">
+		<label>
+			<span>层级选择器:</span>
+			<select id="cengji">
+				<option selected="selected" data-element="#cengji-container *">default</option>
+				<option data-element="#cengji-container ul > li">ul>li</option>
+				<option data-element="#cengji-container ul + div">ul+div</option>
+				<option data-element="#cengji-container ul ~ div">ul~div</option>
+			</select>
+		</label>
+	</div>
+
+	<div id="cengji-container" class="clearfix">
+		<div class="box">div</div>
+		<span class="box">span</span>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<div class="box">div</div>
+		<p class="box">p</p>
+		<div class="box">div</div>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<div class="box">div</div>
+	</div>
+
+	<div class="form">
+		<label>
+			<span>筛选选择器:</span>
+			<select id="shaixuan">
+				<option selected="selected" data-element="#shaixuan-container *">default</option>
+				<option data-element="#shaixuan-container ul > li:eq(2)">ul>li:eq(2)</option>
+				<option data-element="#shaixuan-container ul > li:eq(-2)">ul>li:eq(-2)</option>
+				<option data-element="#shaixuan-container li:even">li:even</option>
+				<option data-element="#shaixuan-container li:odd">li:odd</option>
+				<option data-element="#shaixuan-container ul > li:first">li:first</option>
+				<option data-element="#shaixuan-container ul > li:last">li:last</option>
+				<option data-element="#shaixuan-container ul > li:gt(2)">ul>li:gt(2)</option>
+				<option data-element="#shaixuan-container ul > li:lt(2)">ul>li:lt(2)</option>
+				<option data-element="#shaixuan-container :header">:header</option>
+				<option data-element="#shaixuan-container li:not(.no)">li:not(.no)</option>
+			</select>
+		</label>
+	</div>
+
+	<div id="shaixuan-container" class="clearfix">
+		<h1 class="box">h1</h1>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li class="no">3</li>
+			<li>4</li>
+			<li class="no">5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li class="no">9</li>
+		</ul>
+		<div class="box">div</div>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<h2 class="box">h2</h2>
+	</div>
+
+	<div class="form">
+		<label>
+			<span>内容选择器:</span>
+			<select id="neirong">
+				<option selected="selected" data-element="#neirong-container *">default</option>
+				<option data-element="#neirong-container .box:has(li)">.box:has(li)</option>
+				<option data-element="#neirong-container li:empty">li:empty</option>
+				<option data-element="#neirong-container li:parent">li:parent</option>
+			</select>
+		</label>
+	</div>
+
+	<div id="neirong-container" class="clearfix">
+		<div class="box">div</div>
+		<span class="box">span</span>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li></li>
+		</ul>
+		<div class="box">div</div>
+		<p class="box">p</p>
+		<div class="box">div</div>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li></li>
+		</ul>
+		<div class="box">div</div>
+	</div>
+
+	<div class="form">
+		<label>
+			<span>属性选择器:</span>
+			<select id="shuxing">
+				<option selected="selected" data-element="#shuxing-container *">default</option>
+				<option data-element="#shuxing-container div[class]">div[class]</option>
+				<option data-element="#shuxing-container div[data-name='chenhong']">div[data-name='chenhong']</option>
+				<option data-element="#shuxing-container div[data-name*='chen']">div[data-name*='chen']</option>
+				<option data-element="#shuxing-container div[data-name~='chen']">div[data-name~='chen']</option>
+				<option data-element="#shuxing-container div[data-name^='chen']">div[data-name^='chen']</option>
+				<option data-element="#shuxing-container div[data-name$='hong']">div[data-name$='hong']</option>
+				<option data-element="#shuxing-container div[data-name!='chen']">div[data-name!='chen']</option>
+				<option data-element="#shuxing-container div[data-name|='chen']">div[data-name|='chen']</option>
+			</select>
+		</label>
+	</div>
+
+	<div id="shuxing-container" class="clearfix">
+		<div class="box" data-name="chenhong">has chenhong</div>
+		<div class="box"></div>
+		<div class="box" data-name="zhaoshujuan">has zhaoshujuan</div>
+		<div class="box"></div>
+		<div class="box" data-name="chen-yiran">has chen-yiran</div>
+		<div class="box"></div>
+		<div class="box" data-name="chenyiran">has chenyiran</div>
+		<div class="box"></div>
+		<div class="box" data-name="chen">has chen</div>
+		<div class="box"></div>
+		<div class="box" data-name="chenhong">has chenhong</div>
+		<div class="box"></div>
+		<div class="box" data-name="chen-hong">has chen-hong</div>
+	</div>
+
+	<div class="form">
+		<label>
+			<span>子元素选择器:</span>
+			<select id="ziyuansu">
+				<option selected="selected" data-element="#ziyuansu-container *">default</option>
+				<optgroup label="child">
+					<option data-element="#ziyuansu-container div:first-child">div:first-child</option>
+					<option data-element="#ziyuansu-container div:last-child">div:last-child</option>
+					<option data-element="#ziyuansu-container div:nth-child(4)">div:nth-child(4)</option>
+					<option data-element="#ziyuansu-container div:nth-last-child(5)">div:nth-last-child(5)</option>
+					<option data-element="#ziyuansu-container ul>li:only-child">ul>li:only-child</option>
+				</optgroup>
+				<optgroup label="type">
+					<option data-element="#ziyuansu-container div:first-of-type">div:first-of-type</option>
+					<option data-element="#ziyuansu-container div:last-of-type">div:last-of-type</option>
+					<option data-element="#ziyuansu-container div:nth-of-type(3)">div:nth-of-type(3)</option>
+					<option data-element="#ziyuansu-container div:nth-last-of-type(3)">div:nth-last-of-type(3)</option>
+					<option data-element="#ziyuansu-container p:only-of-type">p:only-of-type</option>
+				</optgroup>
+			</select>
+		</label>
+	</div>
+
+	<div id="ziyuansu-container" class="clearfix">
+		<div class="box">div</div>
+		<span class="box">span</span>
+		<ul class="box">
+			<li>only one li</li>
+		</ul>
+		<div class="box">div</div>
+		<p class="box">p</p>
+		<div class="box">div</div>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li></li>
+		</ul>
+		<div class="box">div</div>
+	</div>
 
 </body>
 <script type="text/javascript" src="http://s1.qhimg.com/!a182c356/jquery.js"></script>
 <script type="text/javascript">
+
+	var config = {
+		'defaultCss' : {'background-color' : '#2e2e2e'},
+		'customCss'  : {'background-color' : '#c30'}
+	};
+
+	var jq = {
+		selector : function (nodeEl, config) {
+			$(nodeEl).css(config);
+		}
+	}
+
 	
-	
+	$('.form').delegate('select', 'change', function (e) {
+		var itemID     = $(this).attr('id'),
+			nodeEl     = $(this).find('option:selected').attr('data-element'),
+			defaultEl  = $('#' + itemID + '-container *'),
+			selectVal  = $(this).find('option:selected').text(),
+			configType = selectVal === 'default' ? config.defaultCss : config.customCss;
+		if (selectVal !== 'default') {
+			jq.selector(defaultEl, config.defaultCss);
+		}
+		jq.selector(nodeEl, configType);
+	});
+
 
 </script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
